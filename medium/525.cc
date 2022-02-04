@@ -4,7 +4,7 @@ public:
         
         const int N = nums.size();
         
-        // maps i => j, where i is the smallest number such that nums[0:i] contains j more 1s than 0s
+        // maps i => j, where j is the smallest number such that nums[0:j] contains i more 1s than 0s
         unordered_map<int, int> firsts;
         firsts[0] = -1;
         
