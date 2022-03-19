@@ -6,7 +6,7 @@ class FreqStack {
     long _num_pushes = 0;
     
     // maps val => number of occurences
-    map<int, int> _counts;
+    unordered_map<int, int> _counts;
     
     // maps {number of occurences, insertion number} => val
     map<pair<int, long>, int> _stack;
