@@ -8,21 +8,21 @@ class FreqStack {
     // maps val => number of occurences
     unordered_map<int, int> _counts;
     
-    // maps {number of occurences, insertion number} => val
-    map<pair<int, long>, int> _stack;
+    // {number of occurences, insertion number, val}
+    priority_queue<tuple<int, long, int>> _stack;
     
 public:
     FreqStack() {}
     
     void push(int val) {
-        _stack[{_counts[val], _num_pushes}] = val;
+        _stack.push({_counts[val], _num_pushes, val});
         _counts[val]++;
         _num_pushes++;
     }
     
     int pop() {
-        int val = _stack.rbegin()->second;
-        _stack.erase(prev(_stack.end()));
+        int val = get<2>(_stack.top());
+        _stack.pop();
         _counts[val]--;
         return val;
     }
